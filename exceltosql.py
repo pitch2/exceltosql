@@ -6,7 +6,7 @@ def obtenir_noms_feuilles(fichier_path):
     noms_feuilles = pd.ExcelFile(fichier_path).sheet_names
     return noms_feuilles
 
-def traitement_feuille(df):
+def traitement_feuille(df): # changer les nom, etude ... en suivant les informations que vous avez besoins de recupérer 
     if 'nom' in df.columns:
         nom = df['nom'].tolist()
         nb_lignes = len(nom)
@@ -42,7 +42,7 @@ def ajout(value):
     try:
         value = tuple('x' if pd.isnull(val) else val for val in value)
     
-        sql = "INSERT INTO ttannee (nom, parcoursup, AdresseMail, bac, classe) VALUES (%s, %s , %s , %s , %s)"
+        sql = "INSERT INTO - (-, -, -, -, -) VALUES (%s, %s , %s , %s , %s)" #changer les - par les colonnes de votre base SQL
         cur.execute(sql, value)
         db.commit()
         print(cur.rowcount, "ligne insérée.")
@@ -53,12 +53,12 @@ def ajout(value):
 fichier_path = "ancien.xls"
 feuilles = obtenir_noms_feuilles(fichier_path)
 
-#connexion aux bases de données
+#connexion aux bases de données 
 db = mysql.connector.connect(
-  host = "localhost",
-  user = "root",
-  password = "",
-  database = "ancieneleves"
+  host = "-",
+  user = "-",
+  password = "-",
+  database = "-"
 )
 cur = db.cursor()
 
